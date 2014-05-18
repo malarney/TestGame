@@ -21,6 +21,7 @@ public class Level extends AnchorPane {
         this.background = background;
         this.player = player;
         this.getChildren().add(background);
+        this.getChildren().add(player);
         this.entities = new ArrayList<>();
         this.interactables = new ArrayList<>();
     }
