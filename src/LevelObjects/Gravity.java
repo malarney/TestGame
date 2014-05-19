@@ -47,7 +47,12 @@ public class Gravity {
         start = shape.getLayoutY();
         action.play();
     }
-
+    /**
+     * Stops the Timeline for gravity
+     */
+    public void stopGravity(){
+        action.stop();
+    }
     /**
      * For adding to variable whilst keeping it effectively final
      */

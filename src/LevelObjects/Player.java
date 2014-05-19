@@ -13,10 +13,10 @@ public class Player extends Entity {
      */
     public Player(int height, int width, ImagePattern skin) {
         super(height, width, skin);
-        this.setLeft(null);
-        this.setRight(null);
-        this.setJump(null);
-        this.setDown(null);
+        //this.setLeft(null);
+        //this.setRight(null);
+        //this.setJump(null);
+        //this.setDown(null);
     }
 
 }

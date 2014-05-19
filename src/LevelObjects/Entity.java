@@ -1,14 +1,18 @@
 package LevelObjects;
 
 import javafx.animation.Timeline;
+import javafx.beans.property.BooleanProperty;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Entity extends Rectangle {
 
-    private Timeline left, right, jump, down;
+    private Timeline left, right;
     private Gravity gravity;
-
+    private Jump jump;
+    BooleanProperty isJumping;
+    BooleanProperty canDrop;
+    
     /**
      * Constructs a new Entity object (for example a player of bad guy)
      *
@@ -20,8 +24,10 @@ public class Entity extends Rectangle {
         this.setHeight(height);
         this.setWidth(width);
         this.setFill(skin);
-    }
-
+//        canDrop.addListener((ChangeListener)->{if(canDrop.getValue()==true&&isJumping.getValue()==false)gravity.startGravity();});
+        
+    }   
+    
     /**
      * Replaces the current Timeline for going left with the given one
      *
@@ -91,7 +97,7 @@ public class Entity extends Rectangle {
      *
      * @param jump The new Timeline
      */
-    public void setJump(Timeline jump) {
+    public void setJump(Jump jump) {
         this.jump = jump;
     }
 
@@ -100,7 +106,7 @@ public class Entity extends Rectangle {
      *
      * @return The current Timeline for jumping
      */
-    public Timeline getJump() {
+    public Jump getJump() {
         return this.jump;
     }
 
@@ -108,14 +114,14 @@ public class Entity extends Rectangle {
      * Starts the Timeline for jumping
      */
     public void startJump() {
-        jump.play();
+        jump.startJump();
     }
 
     /**
      * Stops the Timeline for jumping
      */
     public void stopJump() {
-        jump.stop();
+        jump.stopJump();
     }
 
     /**
@@ -123,8 +129,8 @@ public class Entity extends Rectangle {
      *
      * @param down The new Timeline
      */
-    public void setDown(Timeline down) {
-        this.down = down;
+    public void setDown(Gravity down) {
+        this.gravity = down;
     }
 
     /**
@@ -132,21 +138,21 @@ public class Entity extends Rectangle {
      *
      * @return The current Timeline for going down
      */
-    public Timeline getDown() {
-        return this.down;
+    public Gravity getGravity() {
+        return this.gravity;
     }
 
     /**
      * Starts the Timeline for going down
      */
-    public void startDown() {
-        down.play();
+    public void startGravity() {
+        gravity.startGravity();
     }
 
     /**
      * Stops the Timeline for going down
      */
     public void stopDown() {
-        down.stop();
+        gravity.stopGravity();
     }
 }
